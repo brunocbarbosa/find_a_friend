@@ -4,19 +4,24 @@
   "description": "Challenge from Rocketseat_Ignite class, an API with Typescript and Nodejs for pets adoption, called Find A Friend API, using SOLID pattern, unity tests and e2e tests.",
   "main": "index.js",
   "scripts": {
-    "dev": "tsx watch src/server.ts"
+    "dev": "tsx watch src/server.ts",
+    "prisma:generate": "npx prisma generate",
+    "prisma:studio": "npx prisma studio",
+    "prisma:migrate:dev": "npx prisma migrate dev"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@prisma/client": "5.2.0",
     "fastify": "^4.21.0"
   },
   "devDependencies": {
     "@rocketseat/eslint-config": "^2.1.0",
     "eslint": "^8.47.0",
-    "prisma": "^5.2.0",
+    "prisma": "5.2.0",
     "tsx": "^3.12.7",
-    "typescript": "^5.1.6"
+    "typescript": "^5.1.6",
+    "vitest": "0.34.2"
   }
 }
