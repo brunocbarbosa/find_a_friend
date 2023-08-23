@@ -7,7 +7,10 @@
     "dev": "tsx watch src/server.ts",
     "prisma:generate": "npx prisma generate",
     "prisma:studio": "npx prisma studio",
-    "prisma:migrate:dev": "npx prisma migrate dev"
+    "prisma:migrate:dev": "npx prisma migrate dev",
+    "test": "npx vitest run --dir src/use-cases",
+    "test:watch": "npx vitest --dir src/use-cases",
+    "test:coverage": "vitest --coverage"
   },
   "keywords": [],
   "author": "",
@@ -24,6 +27,7 @@
     "prisma": "5.2.0",
     "tsx": "^3.12.7",
     "typescript": "^5.1.6",
+    "vite-tsconfig-paths": "4.2.0",
     "vitest": "0.34.2"
   }
 }
