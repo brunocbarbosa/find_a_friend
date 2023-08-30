@@ -18,21 +18,21 @@ enum Age {
 }
 
 enum Size {
-  small
-  medium
-  big
+  SMALL
+  MEDIUM
+  BIG
 }
 
 enum Energy {
-  low
-  medium
-  high
+  LOW
+  MEDIUM
+  HIGH
 }
 
 enum Independence {
-  low
-  medium
-  high
+  LOW
+  MEDIUM
+  HIGH
 }
 
 model Organization {
@@ -48,14 +48,15 @@ model Organization {
 }
 
 model Pet {
-  id          String       @id @default(uuid())
-  name        String
-  about       String
-  age         Age          @default(PUPPY)
-  size        Size         @default(small)
-  energy      Energy       @default(low)
-  inependence Independence @default(low)
-  requirement String
+  id           String       @id @default(uuid())
+  name         String
+  about        String
+  age          Age          @default(PUPPY)
+  size         Size         @default(SMALL)
+  energy       Energy       @default(LOW)
+  independence Independence @default(LOW)
+  requirement  String
+  isAdopted    Boolean      @default(false)
 
   organization    Organization @relation(fields: [organization_id], references: [id])
   organization_id String
