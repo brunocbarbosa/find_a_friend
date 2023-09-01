@@ -7,7 +7,8 @@ interface registerOrganizationUseCaseRequest {
   name: string
   email: string
   cep: string
-  addess: string
+  city: string
+  address: string
   whatsapp: string
   password: string
 }
@@ -22,7 +23,8 @@ export class RegisterOrganizationUseCase {
   async execute({
     name,
     email,
-    addess,
+    city,
+    address,
     cep,
     password,
     whatsapp,
@@ -39,7 +41,8 @@ export class RegisterOrganizationUseCase {
     const organization = await this.organizationRepository.create({
       name,
       email,
-      addess,
+      city,
+      address,
       cep,
       password_hash,
       whatsapp,

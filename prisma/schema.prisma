@@ -40,7 +40,8 @@ model Organization {
   name          String
   email         String
   cep           String
-  addess        String
+  city          String
+  address       String
   whatsapp      String
   password_hash String
   created_at    DateTime @default(now())
