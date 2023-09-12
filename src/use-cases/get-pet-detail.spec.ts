@@ -1,18 +1,18 @@
 import { InMemoryOrganizationsRepository } from '@/repositories/in-memory/in-memory-organizations-repository'
 import { InMemoryPetsRepository } from '@/repositories/in-memory/in-memory-pets-repository'
-import { RegisterPetUseCase } from './register-pet'
 import { beforeEach, describe, expect, it } from 'vitest'
-import { OrganizationNotFoundError } from './errors/organization-not-found-error'
+import { GetPetDetailUseCase } from './get-pet-detail'
+import { ResourceNotFoundError } from './errors/resource-not-found-error'
 
 let petRepository: InMemoryPetsRepository
 let organizationRepository: InMemoryOrganizationsRepository
-let sut: RegisterPetUseCase
+let sut: GetPetDetailUseCase
 
 describe('Pet use Case', () => {
   beforeEach(() => {
     petRepository = new InMemoryPetsRepository()
     organizationRepository = new InMemoryOrganizationsRepository()
-    sut = new RegisterPetUseCase(petRepository, organizationRepository)
+    sut = new GetPetDetailUseCase(petRepository)
 
     organizationRepository.items.push({
       id: 'org-01',
@@ -27,29 +27,27 @@ describe('Pet use Case', () => {
     })
   })
 
-  it('should be able to register', async () => {
-    const { pet } = await sut.execute({
+  it('should be get a pet detail', async () => {
+    const createdPet = await petRepository.create({
       name: 'Tuca',
       about: 'cachorrão grande',
-      age: 'YOUNG',
-      independence: 'MEDIUM',
       requirement: 'nehum',
-      organizationId: 'org-01',
+      organization_id: 'org-01',
+    })
+
+    const { pet } = await sut.execute({
+      petId: createdPet.id,
     })
 
     expect(pet.id).toEqual(expect.any(String))
+    expect(pet.name).toEqual('Tuca')
   })
 
-  it('should not be able to register without organization', async () => {
+  it('Should not be able to get pet detail with wrong id', async () => {
     await expect(() =>
       sut.execute({
-        name: 'Tuca',
-        about: 'cachorrão grande',
-        age: 'YOUNG',
-        independence: 'MEDIUM',
-        requirement: 'nehum',
-        organizationId: 'org-02',
+        petId: 'null-id',
       }),
-    ).rejects.toBeInstanceOf(OrganizationNotFoundError)
+    ).rejects.toBeInstanceOf(ResourceNotFoundError)
   })
 })

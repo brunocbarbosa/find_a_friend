@@ -54,8 +54,6 @@ describe('Search Pets use Case', () => {
       page: 1,
     })
 
-    console.log(pets)
-
     expect(pets).toHaveLength(2)
     expect(pets).toEqual([
       expect.objectContaining({ organization_id: 'org-01' }),
@@ -89,8 +87,6 @@ describe('Search Pets use Case', () => {
       page: 1,
     })
 
-    console.log(pets)
-
     expect(pets).toHaveLength(0)
   })
 
@@ -107,8 +103,6 @@ describe('Search Pets use Case', () => {
       query: 'Pouso Alegre',
       page: 1,
     })
-
-    console.log(pets)
 
     expect(pets).toHaveLength(0)
   })

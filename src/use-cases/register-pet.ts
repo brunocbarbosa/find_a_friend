@@ -8,10 +8,10 @@ import { OrganizationNotFoundError } from './errors/organization-not-found-error
 interface registerPetUseCaseRequest {
   name: string
   about: string
-  age: Age
-  size: Size
-  energy: Energy
-  independence: Independence
+  age?: Age
+  size?: Size
+  energy?: Energy
+  independence?: Independence
   requirement: string
   organizationId: string
 }
