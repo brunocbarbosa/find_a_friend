@@ -57,7 +57,7 @@ model Pet {
   energy       Energy       @default(LOW)
   independence Independence @default(LOW)
   requirement  String
-  isAdopted    Boolean      @default(false)
+  is_adopted   Boolean      @default(false)
 
   organization    Organization @relation(fields: [organization_id], references: [id])
   organization_id String
