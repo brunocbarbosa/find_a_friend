@@ -4,7 +4,7 @@ on: [pull_request]
 
 jobs:
   run-e2e-tests:
-    name: "Run E2e Tests"
+    name: "Run E2E Tests"
     runs-on: ubuntu-latest
 
     services:
@@ -27,4 +27,4 @@ jobs:
       - run: npm run test:e2e
         env:
           JWT_SECRET: testing
-          DATABASE_URL: S"postgresql://pet:pet@localhost:5432/findafriend?schema=public"
+          DATABASE_URL: "postgresql://pet:pet@localhost:5432/findafriend?schema=public"
