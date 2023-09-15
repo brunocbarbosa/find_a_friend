@@ -4,12 +4,18 @@
   "description": "Challenge from Rocketseat_Ignite class, an API with Typescript and Nodejs for pets adoption, called Find A Friend API, using SOLID pattern, unity tests and e2e tests.",
   "main": "index.js",
   "scripts": {
+    "start": "node dist/server.js",
     "dev": "tsx watch src/server.ts",
+    "test:create-prisma-environment": "npm link ./prisma/vitest-environment-prisma",
+    "test:install-prisma-evironment": "npm link vitest-environment-prisma",
     "prisma:generate": "npx prisma generate",
     "prisma:studio": "npx prisma studio",
     "prisma:migrate:dev": "npx prisma migrate dev",
     "test": "npx vitest run --dir src/use-cases",
     "test:watch": "npx vitest --dir src/use-cases",
+    "pretest:e2e": "run-s test:create-prisma-environment test:install-prisma-evironment",
+    "test:e2e": "vitest run --dir src/http",
+    "test:e2e:watch": "vitest --dir src/http",
     "test:coverage": "vitest --coverage"
   },
   "keywords": [],
@@ -18,16 +24,26 @@
   "dependencies": {
     "@prisma/client": "5.2.0",
     "bcryptjs": "2.4.3",
-    "fastify": "^4.21.0"
+    "dotenv": "16.3.1",
+    "fastify": "^4.21.0",
+    "pg": "8.11.3",
+    "zod": "3.22.2"
   },
   "devDependencies": {
     "@rocketseat/eslint-config": "^2.1.0",
     "@types/bcryptjs": "2.4.2",
+    "@types/node": "20.6.0",
+    "@types/supertest": "2.0.12",
+    "@vitest/coverage-v8": "0.34.4",
+    "@vitest/ui": "0.34.4",
     "eslint": "^8.47.0",
+    "npm-run-all": "4.1.5",
     "prisma": "5.2.0",
+    "supertest": "6.3.3",
+    "tsup": "7.2.0",
     "tsx": "^3.12.7",
     "typescript": "^5.1.6",
     "vite-tsconfig-paths": "4.2.0",
-    "vitest": "0.34.2"
+    "vitest": "0.33.0"
   }
 }
