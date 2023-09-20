@@ -3,7 +3,7 @@ import { hash } from 'bcryptjs'
 import { FastifyInstance } from 'fastify'
 import request from 'supertest'
 
-export async function createAndAuthenticateUser(app: FastifyInstance) {
+export async function createAndAuthenticateOrganization(app: FastifyInstance) {
   await prisma.organization.create({
     data: {
       name: 'John Doe',

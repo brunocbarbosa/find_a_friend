@@ -1,7 +1,7 @@
 import { app } from '@/app'
 import { afterAll, beforeAll, describe, it, expect } from 'vitest'
 import request from 'supertest'
-import { createAndAuthenticateUser } from '@/utils/test/create-and-authenticate-user'
+import { createAndAuthenticateOrganization } from '@/utils/test/create-and-authenticate-organization'
 import { prisma } from '@/lib/prisma'
 
 describe('Register Pet (e2e)', () => {
@@ -14,11 +14,9 @@ describe('Register Pet (e2e)', () => {
   })
 
   it('should be able to register', async () => {
-    const { token } = await createAndAuthenticateUser(app)
+    const { token } = await createAndAuthenticateOrganization(app)
 
-    const user = await prisma.organization.findFirstOrThrow()
-
-    console.log(token)
+    const organization = await prisma.organization.findFirstOrThrow()
 
     const res = await request(app.server)
       .post('/pets')
@@ -31,7 +29,7 @@ describe('Register Pet (e2e)', () => {
         energy: 'HIGH',
         independence: 'HIGH',
         requirement: 'nehum',
-        organizationId: user.id,
+        organizationId: organization.id,
       })
 
     expect(res.statusCode).toEqual(201)

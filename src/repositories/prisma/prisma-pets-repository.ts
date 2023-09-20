@@ -1,4 +1,4 @@
-import { $Enums, Prisma } from '@prisma/client'
+import { Prisma } from '@prisma/client'
 import { PetRepository } from '../pet-repository'
 import { prisma } from '@/lib/prisma'
 
@@ -13,10 +13,10 @@ export class PrismaPetsRepository implements PetRepository {
     return pet
   }
 
-  async searchMany(queries: string, page: number) {
+  async searchMany(query: string, page: number) {
     const petsByOrganizationCity = await prisma.organization.findMany({
       where: {
-        city: queries,
+        city: query,
       },
 
       select: {
