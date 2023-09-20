@@ -31,6 +31,10 @@ describe('Pet use Case', () => {
     const createdPet = await petRepository.create({
       name: 'Tuca',
       about: 'cachorrão grande',
+      age: 'ADULT',
+      size: 'MEDIUM',
+      energy: 'HIGH',
+      independence: 'HIGH',
       requirement: 'nehum',
       organization_id: 'org-01',
     })
