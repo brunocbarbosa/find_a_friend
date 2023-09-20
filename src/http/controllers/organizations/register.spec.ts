@@ -1,9 +1,8 @@
 import request from 'supertest'
 import { app } from '@/app'
-import { describe } from 'node:test'
-import { afterAll, beforeAll, expect, it } from 'vitest'
+import { describe, afterAll, beforeAll, expect, it } from 'vitest'
 
-describe('Register (e2e)', () => {
+describe('Register Organization (e2e)', () => {
   beforeAll(async () => {
     await app.ready()
   })

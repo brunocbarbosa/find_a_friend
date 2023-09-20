@@ -1,5 +1,3 @@
-import { EmailAlreadyExistsError } from '@/use-cases/errors/email-already-exists-error'
-import { makeRegisterOrganizationUseCase } from '@/use-cases/factories/make-register-organization-use-case'
 import { FastifyReply, FastifyRequest } from 'fastify'
 import { z } from 'zod'
 import { Age, Size, Energy, Independence } from '@prisma/client'
@@ -13,7 +11,7 @@ export async function register(req: FastifyRequest, rep: FastifyReply) {
     size: z.nativeEnum(Size),
     energy: z.nativeEnum(Energy),
     independence: z.nativeEnum(Independence),
-    requirement: z.string().min(6),
+    requirement: z.string(),
     organizationId: z.string().uuid(),
   })
 
@@ -28,28 +26,18 @@ export async function register(req: FastifyRequest, rep: FastifyReply) {
     organizationId,
   } = registerPetSchema.parse(req.body)
 
-  try {
-    const registerPetUseCase = makeRegisterPetUseCase()
+  const registerPetUseCase = makeRegisterPetUseCase()
 
-    await registerPetUseCase.execute({
-      name,
-      about,
-      age,
-      size,
-      energy,
-      independence,
-      requirement,
-      organizationId,
-    })
-  } catch (error) {
-    if (error instanceof EmailAlreadyExistsError) {
-      return rep.status(409).send({
-        message: error.message,
-      })
-    }
-
-    throw error
-  }
+  await registerPetUseCase.execute({
+    name,
+    about,
+    age,
+    size,
+    energy,
+    independence,
+    requirement,
+    organizationId,
+  })
 
   return rep.status(201).send()
 }

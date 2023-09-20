@@ -1,5 +1,4 @@
 import { PrismaOrganizationsRepository } from '@/repositories/prisma/prisma-organizations-repository'
-import { RegisterOrganizationUseCase } from '../register-organization'
 import { PrismaPetsRepository } from '@/repositories/prisma/prisma-pets-repository'
 import { RegisterPetUseCase } from '../register-pet'
 
