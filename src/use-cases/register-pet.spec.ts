@@ -31,8 +31,10 @@ describe('Pet use Case', () => {
     const { pet } = await sut.execute({
       name: 'Tuca',
       about: 'cachorrão grande',
-      age: 'YOUNG',
-      independence: 'MEDIUM',
+      age: 'ADULT',
+      size: 'MEDIUM',
+      energy: 'HIGH',
+      independence: 'HIGH',
       requirement: 'nehum',
       organizationId: 'org-01',
     })
@@ -45,8 +47,10 @@ describe('Pet use Case', () => {
       sut.execute({
         name: 'Tuca',
         about: 'cachorrão grande',
-        age: 'YOUNG',
-        independence: 'MEDIUM',
+        age: 'ADULT',
+        size: 'MEDIUM',
+        energy: 'HIGH',
+        independence: 'HIGH',
         requirement: 'nehum',
         organizationId: 'org-02',
       }),

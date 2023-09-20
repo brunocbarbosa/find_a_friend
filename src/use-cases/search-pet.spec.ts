@@ -15,6 +15,10 @@ describe('Search Pets use Case', () => {
     await petRepository.create({
       name: 'Tuca',
       about: 'cachorrão grande',
+      age: 'ADULT',
+      size: 'MEDIUM',
+      energy: 'HIGH',
+      independence: 'HIGH',
       requirement: 'nehum',
       organization_id: 'org-01',
     })
@@ -34,6 +38,10 @@ describe('Search Pets use Case', () => {
     await petRepository.create({
       name: 'Negão',
       about: 'cachorrão vira lata',
+      age: 'ADULT',
+      size: 'MEDIUM',
+      energy: 'HIGH',
+      independence: 'HIGH',
       requirement: 'nehum',
       organization_id: 'org-02',
     })
@@ -77,6 +85,10 @@ describe('Search Pets use Case', () => {
     await petRepository.create({
       name: 'Negão',
       about: 'cachorrão vira lata',
+      age: 'ADULT',
+      size: 'MEDIUM',
+      energy: 'HIGH',
+      independence: 'HIGH',
       requirement: 'nehum',
       organization_id: 'org-02',
       is_adopted: true,
@@ -94,6 +106,10 @@ describe('Search Pets use Case', () => {
     await petRepository.create({
       name: 'Negão',
       about: 'cachorrão vira lata',
+      age: 'ADULT',
+      size: 'MEDIUM',
+      energy: 'HIGH',
+      independence: 'HIGH',
       requirement: 'nehum',
       organization_id: 'org-02',
       is_adopted: true,

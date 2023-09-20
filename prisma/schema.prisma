@@ -52,10 +52,10 @@ model Pet {
   id           String       @id @default(uuid())
   name         String
   about        String
-  age          Age          @default(PUPPY)
-  size         Size         @default(SMALL)
-  energy       Energy       @default(LOW)
-  independence Independence @default(LOW)
+  age          Age
+  size         Size
+  energy       Energy
+  independence Independence
   requirement  String
   is_adopted   Boolean      @default(false)
 
